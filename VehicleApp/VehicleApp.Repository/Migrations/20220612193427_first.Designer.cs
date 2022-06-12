@@ -12,7 +12,7 @@ using VehicleApp.Repository.AppDbContexts;
 namespace VehicleApp.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220610170923_first")]
+    [Migration("20220612193427_first")]
     partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -239,6 +239,9 @@ namespace VehicleApp.Repository.Migrations
                     b.Property<int>("CreateUserId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Explanation")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -266,20 +269,22 @@ namespace VehicleApp.Repository.Migrations
                     b.Property<int>("IsDeleteDateUserId")
                         .HasColumnType("int");
 
+                    b.Property<string>("ShortCode")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("UpdateUserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("VehicleFeaturesId")
+                    b.Property<int>("VehicleFeaturesId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("VehicleFeaturesId")
-                        .IsUnique()
-                        .HasFilter("[VehicleFeaturesId] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("VehicleBrands");
                 });
@@ -306,6 +311,10 @@ namespace VehicleApp.Repository.Migrations
                     b.Property<int>("CreateUserId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Explanation")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -333,20 +342,23 @@ namespace VehicleApp.Repository.Migrations
                     b.Property<int>("IsDeleteDateUserId")
                         .HasColumnType("int");
 
+                    b.Property<string>("ShortCode")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("UpdateUserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("VehicleFeaturesId")
+                    b.Property<int>("VehicleFeaturesId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("VehicleFeaturesId")
-                        .IsUnique()
-                        .HasFilter("[VehicleFeaturesId] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("VehicleColors");
                 });
@@ -431,6 +443,9 @@ namespace VehicleApp.Repository.Migrations
                     b.Property<int>("CreateUserId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Explanation")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FuelsName")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -463,20 +478,22 @@ namespace VehicleApp.Repository.Migrations
                     b.Property<int>("IsDeleteDateUserId")
                         .HasColumnType("int");
 
+                    b.Property<string>("ShortCode")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("UpdateUserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("VehicleFeaturesId")
+                    b.Property<int>("VehicleFeaturesId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("VehicleFeaturesId")
-                        .IsUnique()
-                        .HasFilter("[VehicleFeaturesId] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("VehicleFuels");
                 });
@@ -531,7 +548,7 @@ namespace VehicleApp.Repository.Migrations
                     b.Property<int>("UpdateUserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("VehicleFeaturesId")
+                    b.Property<int>("VehicleFeaturesId")
                         .HasColumnType("int");
 
                     b.Property<string>("Year")
@@ -542,8 +559,7 @@ namespace VehicleApp.Repository.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("VehicleFeaturesId")
-                        .IsUnique()
-                        .HasFilter("[VehicleFeaturesId] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("VehicleProductionYears");
                 });
@@ -606,13 +622,13 @@ namespace VehicleApp.Repository.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<decimal?>("PurchasePrice")
+                    b.Property<decimal>("PurchasePrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal?>("SalePrice")
+                    b.Property<decimal>("SalePrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("Stock")
+                    b.Property<int>("Stock")
                         .HasColumnType("int");
 
                     b.Property<string>("TechnicalWebUrl")
@@ -648,6 +664,9 @@ namespace VehicleApp.Repository.Migrations
                             IsDeleteDateUpdateUserId = 0,
                             IsDeleteDateUserId = 0,
                             Model = "3.20",
+                            PurchasePrice = 0m,
+                            SalePrice = 0m,
+                            Stock = 0,
                             UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UpdateUserId = 0
                         },
@@ -668,6 +687,9 @@ namespace VehicleApp.Repository.Migrations
                             IsDeleteDateUpdateUserId = 0,
                             IsDeleteDateUserId = 0,
                             Model = "Focus",
+                            PurchasePrice = 0m,
+                            SalePrice = 0m,
+                            Stock = 0,
                             UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UpdateUserId = 0
                         },
@@ -688,6 +710,9 @@ namespace VehicleApp.Repository.Migrations
                             IsDeleteDateUpdateUserId = 0,
                             IsDeleteDateUserId = 0,
                             Model = "Corolla",
+                            PurchasePrice = 0m,
+                            SalePrice = 0m,
+                            Stock = 0,
                             UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UpdateUserId = 0
                         },
@@ -708,6 +733,9 @@ namespace VehicleApp.Repository.Migrations
                             IsDeleteDateUpdateUserId = 0,
                             IsDeleteDateUserId = 0,
                             Model = "Astra",
+                            PurchasePrice = 0m,
+                            SalePrice = 0m,
+                            Stock = 0,
                             UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UpdateUserId = 0
                         },
@@ -728,6 +756,9 @@ namespace VehicleApp.Repository.Migrations
                             IsDeleteDateUpdateUserId = 0,
                             IsDeleteDateUserId = 0,
                             Model = "Passat",
+                            PurchasePrice = 0m,
+                            SalePrice = 0m,
+                            Stock = 0,
                             UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UpdateUserId = 0
                         },
@@ -748,6 +779,9 @@ namespace VehicleApp.Repository.Migrations
                             IsDeleteDateUpdateUserId = 0,
                             IsDeleteDateUserId = 0,
                             Model = "Spark",
+                            PurchasePrice = 0m,
+                            SalePrice = 0m,
+                            Stock = 0,
                             UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UpdateUserId = 0
                         },
@@ -768,6 +802,9 @@ namespace VehicleApp.Repository.Migrations
                             IsDeleteDateUpdateUserId = 0,
                             IsDeleteDateUserId = 0,
                             Model = "Egea",
+                            PurchasePrice = 0m,
+                            SalePrice = 0m,
+                            Stock = 0,
                             UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UpdateUserId = 0
                         });
@@ -777,7 +814,9 @@ namespace VehicleApp.Repository.Migrations
                 {
                     b.HasOne("VehicleApp.Core.VehicleFeatures", "VehicleFeatures")
                         .WithOne("VehicleBrands")
-                        .HasForeignKey("VehicleApp.Core.VehicleBrands", "VehicleFeaturesId");
+                        .HasForeignKey("VehicleApp.Core.VehicleBrands", "VehicleFeaturesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("VehicleFeatures");
                 });
@@ -786,7 +825,9 @@ namespace VehicleApp.Repository.Migrations
                 {
                     b.HasOne("VehicleApp.Core.VehicleFeatures", "VehicleFeatures")
                         .WithOne("VehicleColors")
-                        .HasForeignKey("VehicleApp.Core.VehicleColors", "VehicleFeaturesId");
+                        .HasForeignKey("VehicleApp.Core.VehicleColors", "VehicleFeaturesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("VehicleFeatures");
                 });
@@ -804,7 +845,9 @@ namespace VehicleApp.Repository.Migrations
                 {
                     b.HasOne("VehicleApp.Core.VehicleFeatures", "VehicleFeatures")
                         .WithOne("VehicleFuels")
-                        .HasForeignKey("VehicleApp.Core.VehicleFuels", "VehicleFeaturesId");
+                        .HasForeignKey("VehicleApp.Core.VehicleFuels", "VehicleFeaturesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("VehicleFeatures");
                 });
@@ -813,7 +856,9 @@ namespace VehicleApp.Repository.Migrations
                 {
                     b.HasOne("VehicleApp.Core.VehicleFeatures", "VehicleFeatures")
                         .WithOne("VehicleProductionYears")
-                        .HasForeignKey("VehicleApp.Core.VehicleProductionYears", "VehicleFeaturesId");
+                        .HasForeignKey("VehicleApp.Core.VehicleProductionYears", "VehicleFeaturesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("VehicleFeatures");
                 });

@@ -47,9 +47,9 @@ namespace VehicleApp.Repository.Migrations
                     ChassisNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Explanation = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TechnicalWebUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PurchasePrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    SalePrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    Stock = table.Column<int>(type: "int", nullable: true),
+                    PurchasePrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    SalePrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Stock = table.Column<int>(type: "int", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreateUserId = table.Column<int>(type: "int", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -115,7 +115,9 @@ namespace VehicleApp.Repository.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BrandsName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    VehicleFeaturesId = table.Column<int>(type: "int", nullable: true),
+                    ShortCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Explanation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    VehicleFeaturesId = table.Column<int>(type: "int", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreateUserId = table.Column<int>(type: "int", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -138,7 +140,8 @@ namespace VehicleApp.Repository.Migrations
                         name: "FK_VehicleBrands_VehicleFeatures_VehicleFeaturesId",
                         column: x => x.VehicleFeaturesId,
                         principalTable: "VehicleFeatures",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -148,7 +151,9 @@ namespace VehicleApp.Repository.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ColorsName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    VehicleFeaturesId = table.Column<int>(type: "int", nullable: true),
+                    ShortCode = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    Explanation = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    VehicleFeaturesId = table.Column<int>(type: "int", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreateUserId = table.Column<int>(type: "int", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -171,7 +176,8 @@ namespace VehicleApp.Repository.Migrations
                         name: "FK_VehicleColors_VehicleFeatures_VehicleFeaturesId",
                         column: x => x.VehicleFeaturesId,
                         principalTable: "VehicleFeatures",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -181,7 +187,9 @@ namespace VehicleApp.Repository.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FuelsName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    VehicleFeaturesId = table.Column<int>(type: "int", nullable: true),
+                    ShortCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Explanation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    VehicleFeaturesId = table.Column<int>(type: "int", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreateUserId = table.Column<int>(type: "int", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -204,7 +212,8 @@ namespace VehicleApp.Repository.Migrations
                         name: "FK_VehicleFuels_VehicleFeatures_VehicleFeaturesId",
                         column: x => x.VehicleFeaturesId,
                         principalTable: "VehicleFeatures",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -214,7 +223,7 @@ namespace VehicleApp.Repository.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Year = table.Column<string>(type: "nvarchar(4)", maxLength: 4, nullable: false),
-                    VehicleFeaturesId = table.Column<int>(type: "int", nullable: true),
+                    VehicleFeaturesId = table.Column<int>(type: "int", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreateUserId = table.Column<int>(type: "int", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -237,7 +246,8 @@ namespace VehicleApp.Repository.Migrations
                         name: "FK_VehicleProductionYears_VehicleFeatures_VehicleFeaturesId",
                         column: x => x.VehicleFeaturesId,
                         principalTable: "VehicleFeatures",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -259,28 +269,26 @@ namespace VehicleApp.Repository.Migrations
                 columns: new[] { "Id", "ActiveDateUpdate", "CategoryId", "ChassisNumber", "CreateDate", "CreateUserId", "Explanation", "IsActive", "IsActiveDate", "IsActiveDateUpdateUserId", "IsActiveDateUserId", "IsDelete", "IsDeleteDate", "IsDeleteDateUpdate", "IsDeleteDateUpdateUserId", "IsDeleteDateUserId", "Model", "PurchasePrice", "SalePrice", "Stock", "TechnicalWebUrl", "UpdateDate", "UpdateUserId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, "3.20", null, null, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 },
-                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, "Focus", null, null, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 },
-                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, "Corolla", null, null, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 },
-                    { 4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, "Astra", null, null, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 },
-                    { 5, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, "Passat", null, null, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 },
-                    { 6, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, "Spark", null, null, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 },
-                    { 7, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, "Egea", null, null, null, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 }
+                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, "3.20", 0m, 0m, 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 },
+                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, "Focus", 0m, 0m, 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 },
+                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, "Corolla", 0m, 0m, 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 },
+                    { 4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, "Astra", 0m, 0m, 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 },
+                    { 5, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, "Passat", 0m, 0m, 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 },
+                    { 6, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, "Spark", 0m, 0m, 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 },
+                    { 7, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, null, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 0, "Egea", 0m, 0m, 0, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 }
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_VehicleBrands_VehicleFeaturesId",
                 table: "VehicleBrands",
                 column: "VehicleFeaturesId",
-                unique: true,
-                filter: "[VehicleFeaturesId] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_VehicleColors_VehicleFeaturesId",
                 table: "VehicleColors",
                 column: "VehicleFeaturesId",
-                unique: true,
-                filter: "[VehicleFeaturesId] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_VehicleFeatures_VehiclesId",
@@ -291,15 +299,13 @@ namespace VehicleApp.Repository.Migrations
                 name: "IX_VehicleFuels_VehicleFeaturesId",
                 table: "VehicleFuels",
                 column: "VehicleFeaturesId",
-                unique: true,
-                filter: "[VehicleFeaturesId] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_VehicleProductionYears_VehicleFeaturesId",
                 table: "VehicleProductionYears",
                 column: "VehicleFeaturesId",
-                unique: true,
-                filter: "[VehicleFeaturesId] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Vehicles_CategoryId",

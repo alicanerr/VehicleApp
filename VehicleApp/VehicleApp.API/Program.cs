@@ -37,6 +37,12 @@ builder.Services.AddScoped<IVehicleService, VehicleService>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 
+builder.Services.AddScoped<IVehicleFeaturesRepository, VehicleFeaturesRepository>();
+builder.Services.AddScoped<IVehicleFeaturesService, VehicleFeatureService>();
+
+builder.Services.AddScoped<IVehicleColorsRepository, VehicleColorsRepository>();
+builder.Services.AddScoped<IVehicleColorService, VehicleColorService>();
+
 
 builder.Services.AddDbContext<AppDbContext>(x =>
 {

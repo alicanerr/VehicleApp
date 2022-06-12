@@ -8,8 +8,8 @@ namespace VehicleApp.Core
 {
     public class VehicleProductionYears : BaseEntity
     {
-        public string? Year { get; set; }
-        public int? VehicleFeaturesId { get; set; }
+        public string Year { get; set; }
+        public int VehicleFeaturesId { get; set; }
         public VehicleFeatures VehicleFeatures { get; set; }
     }
 }

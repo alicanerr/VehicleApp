@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using VehicleApp.Core.Repositories;
 using VehicleApp.Core.Services;
 using VehicleApp.Core.UnitOfWorks;
+using VehicleApp.Service.Exceptions;
 
 namespace VehicleApp.Service.Services
 {
@@ -48,7 +49,12 @@ namespace VehicleApp.Service.Services
 
         public async Task<T> GetByIdAsync(int Id)
         {
-            return await _repository.GetByIdAsync(Id);
+            var hasVehicle = await _repository.GetByIdAsync(Id);
+            if (hasVehicle ==null)
+            {
+                throw new NotFoundException($"{typeof(T).Name} bulunamadı");
+            }
+            return hasVehicle;
         }
 
         public async Task RemoveAsync(T entity)

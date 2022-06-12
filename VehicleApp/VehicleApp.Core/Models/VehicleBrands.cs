@@ -8,10 +8,10 @@ namespace VehicleApp.Core
 {
     public class VehicleBrands :BaseEntity
     {
-        public string? BrandsName { get; set; }
-        public string? ShortCode { get; set; }
-        public string? Explanation { get; set; }
-        public int? VehicleFeaturesId { get; set; }
+        public string BrandsName { get; set; }
+        public string ShortCode { get; set; }
+        public string Explanation { get; set; }
+        public int VehicleFeaturesId { get; set; }
         public VehicleFeatures VehicleFeatures { get; set; }
 
     }

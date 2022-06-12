@@ -8,10 +8,10 @@ namespace VehicleApp.Core
 {
     public class VehicleColors:BaseEntity
     {
-        public string? ColorsName { get; set; }
-        public string? ShortCode { get; set; }
-        public string? Explanation { get; set; }
-        public int? VehicleFeaturesId { get; set; }
+        public string ColorsName { get; set; }
+        public string ShortCode { get; set; }
+        public string Explanation { get; set; }
+        public int VehicleFeaturesId { get; set; }
         public VehicleFeatures VehicleFeatures { get; set; }
     }
 }

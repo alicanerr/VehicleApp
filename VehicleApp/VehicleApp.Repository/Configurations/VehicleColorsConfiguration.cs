@@ -16,6 +16,8 @@ namespace VehicleApp.Repository.Configurations
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn();
             builder.Property(x => x.ColorsName).IsRequired().HasMaxLength(100);
+            builder.Property(x => x.ShortCode).HasMaxLength(100);
+            builder.Property(x => x.Explanation).HasMaxLength(100);
             builder.HasOne(x => x.VehicleFeatures).WithOne(x => x.VehicleColors).HasForeignKey<VehicleColors>(x => x.VehicleFeaturesId);
 
         }
