@@ -8,13 +8,21 @@ using VehicleApp.Repository.Repositories;
 using VehicleApp.Core.Services;
 using VehicleApp.Service.Services;
 using VehicleApp.Service.Mappings;
+using FluentValidation.AspNetCore;
+using VehicleApp.Service.Validations;
+using VehicleApp.API.Filters;
+using Microsoft.AspNetCore.Mvc;
+using VehicleApp.API.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+
+builder.Services.AddControllers(options => options.Filters.Add(new ValideteFilterAttribute())).AddFluentValidation(x=> x.RegisterValidatorsFromAssemblyContaining<VehicleDtoValidator>());
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.Configure<ApiBehaviorOptions>(options => { options.SuppressModelStateInvalidFilter = true; });
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -47,6 +55,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UserCustomException();
 
 app.UseAuthorization();
 

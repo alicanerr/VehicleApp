@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "PVBLdETyQvFVpTmBtCjg1gPu8bWrb0AnS0ro/qj48QysfMuRGjT80/kE0oUJM65KAHuA1IirGwkkPMCDwlfzyg==",
+  "dgSpecHash": "dqKZ2Nd9ZScrDKykj6Kpm9WTpFYRvKgLoGx1jakEhY1Sz9wtfowPI4QWWgTNbctnE0ZD6cpvhbmZDFgxSXot1g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Alican\\OneDrive\\Masaüstü\\VehicleApp1006\\VehicleApp\\VehicleApp.API\\VehicleApp.API.csproj",
+  "projectFilePath": "C:\\Users\\Alican\\OneDrive\\Belgeler\\GitHub\\VehicleApp\\VehicleApp\\VehicleApp.API\\VehicleApp.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Alican\\.nuget\\packages\\autofac\\6.0.0\\autofac.6.0.0.nupkg.sha512",
+    "C:\\Users\\Alican\\.nuget\\packages\\autofac.extensions.dependencyinjection\\7.2.0\\autofac.extensions.dependencyinjection.7.2.0.nupkg.sha512",
     "C:\\Users\\Alican\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\Alican\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\Alican\\.nuget\\packages\\fluentvalidation\\11.0.1\\fluentvalidation.11.0.1.nupkg.sha512",

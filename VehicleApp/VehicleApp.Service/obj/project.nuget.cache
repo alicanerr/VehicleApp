@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iy+NXPztb/ED4leLwRBrKqq2YwR3TPOGZ7BO0yUp5WWmQaoO5Ifel1ZSHHqpIoLSMXg6+VIkgz8t2hAnP9Y1eQ==",
+  "dgSpecHash": "xdffJN9OM/zq0Z+h4zu8qztlr1b8Htj8pIrzim4SqNGlMNr0ioAtyF3oHvSC/YuIu79xpsemNoEA5X1uYKC50w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Alican\\OneDrive\\Masaüstü\\VehicleApp1006\\VehicleApp\\VehicleApp.Service\\VehicleApp.Service.csproj",
+  "projectFilePath": "C:\\Users\\Alican\\OneDrive\\Belgeler\\GitHub\\VehicleApp\\VehicleApp\\VehicleApp.Service\\VehicleApp.Service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Alican\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\Alican\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
