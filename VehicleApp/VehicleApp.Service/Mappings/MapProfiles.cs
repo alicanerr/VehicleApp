@@ -22,6 +22,7 @@ namespace VehicleApp.Service.Mappings
             CreateMap<VehicleProductionYears, VehicleProductionYearsDto>().ReverseMap();
             CreateMap<Vehicles, VehicleDto>().ReverseMap();
             CreateMap<Vehicles, VehicleCatogoryDto>();
+            CreateMap<Category, CategoryVehicleDto>();
         }
     }
 }

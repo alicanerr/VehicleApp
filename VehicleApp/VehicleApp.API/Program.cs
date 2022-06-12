@@ -26,6 +26,9 @@ builder.Services.AddAutoMapper(typeof(MapProfiles));
 builder.Services.AddScoped<IVehicleRepository, VehicleRepository>();
 builder.Services.AddScoped<IVehicleService, VehicleService>();
 
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+
 
 builder.Services.AddDbContext<AppDbContext>(x =>
 {
