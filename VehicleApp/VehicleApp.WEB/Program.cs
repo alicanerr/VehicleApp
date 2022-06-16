@@ -1,8 +1,24 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+using VehicleApp.Repository.AppDbContexts;
+using VehicleApp.Service.Mappings;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Services.AddAutoMapper(typeof(MapProfiles));
+builder.Services.AddDbContext<AppDbContext>(x =>
+{
+    x.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection"), option => {
+        option.MigrationsAssembly(Assembly.GetAssembly(typeof(AppDbContext)).GetName().Name);
+    });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -9,6 +9,7 @@ namespace VehicleApp.Core.Services
 {
     public interface IVehicleService:IGenericService<Vehicles>
     {
-        Task<CustomResponseDto<List<VehicleCatogoryDto>>> GetVehiclesCategories();
+        public Task<CustomResponseDto<List<VehicleCatogoryDto>>> GetVehiclesCategories();
+        public Task<List<VehicleCatogoryDto>> GetWebAllVehiclesCategory();
     }
 }

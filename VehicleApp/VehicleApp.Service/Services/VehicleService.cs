@@ -29,5 +29,12 @@ namespace VehicleApp.Service.Services
             var vehicleDtos = _mapper.Map<List<VehicleCatogoryDto>>(vehicle);
             return CustomResponseDto<List<VehicleCatogoryDto>>.Success(200, vehicleDtos);
         }
+
+        public async Task<List<VehicleCatogoryDto>> GetWebAllVehiclesCategory()
+        {
+            var vehicle = await _vehicleRepository.GetWebAllVehiclesCategoryAsync();
+            var vehicleDtos = _mapper.Map<List<VehicleCatogoryDto>>(vehicle);
+            return vehicleDtos;
+        }
     }
 }

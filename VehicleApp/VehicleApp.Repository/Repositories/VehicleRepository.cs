@@ -20,5 +20,10 @@ namespace VehicleApp.Repository.Repositories
         {
             return await _context.Vehicles.Include(x => x.Category).ToListAsync();
         }
+
+        public async Task<List<Vehicles>> GetWebAllVehiclesCategoryAsync()
+        {
+            return await _context.Vehicles.Include(x => x.Category).ToListAsync();
+        }
     }
 }
