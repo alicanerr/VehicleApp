@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "eec73b68-bacd-4d73-9d88-65c632a838bf": {
+      "ProjectGuid": "eec73b68-bacd-4d73-9d88-65c632a838bf",
+      "DisplayName": "VehicleApp.Core",
+      "ColorIndex": 0
+    },
+    "b6e0e7d8-0c27-4cc8-b4ca-b8f4b3756d05": {
+      "ProjectGuid": "b6e0e7d8-0c27-4cc8-b4ca-b8f4b3756d05",
+      "DisplayName": "VehicleApp.Repository",
+      "ColorIndex": 1
+    },
+    "ef10f3fc-f108-4249-8509-063f55def4c4": {
+      "ProjectGuid": "ef10f3fc-f108-4249-8509-063f55def4c4",
+      "DisplayName": "VehicleApp.Service",
+      "ColorIndex": 2
+    },
+    "455eeecf-3b0d-47cf-86cc-de76639e0914": {
+      "ProjectGuid": "455eeecf-3b0d-47cf-86cc-de76639e0914",
+      "DisplayName": "VehicleApp.API",
+      "ColorIndex": 3
+    },
+    "60437676-fb38-4b32-8492-638fa6cfcb03": {
+      "ProjectGuid": "60437676-fb38-4b32-8492-638fa6cfcb03",
+      "DisplayName": "VehicleApp.WEB",
+      "ColorIndex": 4
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 5
+}
